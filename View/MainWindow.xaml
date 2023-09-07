@@ -1,0 +1,68 @@
+﻿<Window x:Class="HW_WPF_Image_from_Pixabay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HW_WPF_Image_from_Pixabay"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="Searching images on Pixabay" Height="650" Width="1150"
+        Style="{DynamicResource ResourceKey=WindowStyle}">
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="40" />
+        <RowDefinition Height="40" />
+        <RowDefinition Height="0" />
+        <RowDefinition Height="0" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="25*"/>
+        <ColumnDefinition Width="5"/>
+        <ColumnDefinition Width="75*"/>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Border  Grid.ColumnSpan="3" Style="{DynamicResource ResourceKey=BorderStyleHead}">
+        <TextBlock Text="SEARCHING AND SAVING IMAGES FROM SITE PIXABAY" Style="{DynamicResource ResourceKey=TxtBlockHead}"/>
+    </Border>
+        <Border Grid.Row="1"  Grid.ColumnSpan="3" Style="{DynamicResource ResourceKey=BorderStyleBlue}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="left" Cursor="">
+                <TextBlock Text="Searching text" FontSize="16" Margin="10 8 10 0"/>
+                <TextBox Text="{Binding Path=SearchText, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}"/>
+                <TextBlock Text="Amount" FontSize="16" Margin="0 8 10 0"/>
+                <TextBox Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}" Width="50"/>
+                <Button Content="SEARCH" Command="{Binding Searching}" Style="{StaticResource MaterialDesignFlatButton}"  Margin="0 0 10 0" Cursor="Hand"/>
+                <TextBlock Text="Folder path" FontSize="16" Margin="30 8 10 0"/>
+                <TextBox Text="{Binding Path=Folder, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}" Width="150"/>
+                <CheckBox x:Name="All" Content="All files" IsChecked="{Binding Path=AllFiles, Mode=TwoWay}" Cursor=""/>
+                <Button Content="SAVE" Command="{Binding SaveToFolder}" Style="{StaticResource MaterialDesignFlatButton}"  Margin="0 0 10 0" Cursor="Hand"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0 10 10 0" Panel.ZIndex="1">
+            <TextBlock Text="Day" FontSize="16" />
+            <ToggleButton  IsChecked="{Binding IsChecked}" x:Name="LightSwitch" Width="30" Height="20" Margin="10 -5 10 0" Click="LightSwitch_Click"/>
+            <TextBlock Text="Night" FontSize="16"/>
+        </StackPanel>
+
+        <Border Style="{DynamicResource ResourceKey=BorderStyleWhite}" Grid.Row="4">
+        <ListBox ItemsSource="{Binding Images}" SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=ListBoxStyle}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="5, 3"/>
+                        <TextBlock Text=" (" Margin="0, 3"/>
+                        <TextBlock Text="{Binding Path=Size}" Margin="0, 3"/>
+                        <TextBlock Text=")" Margin="0, 3"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Border>
+    <GridSplitter Grid.Column="1" Grid.Row="4" Width="5" HorizontalAlignment="Stretch"/>
+        <Border  Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Style="{DynamicResource ResourceKey=BorderStyleWhite}" DataContext="{Binding SelectedImage}">
+            <Image x:Name="Image" Grid.Row="0" Source="{Binding Path=UrlPhoto}" Stretch="Uniform"/>
+        </Border>
+    </Grid>
+</Window>
