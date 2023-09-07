@@ -33,7 +33,8 @@
                 <TextBlock Text="Amount" FontSize="16" Margin="0 8 10 0"/>
                 <TextBox Text="{Binding Path=Amount, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}" Width="50"/>
                 <Button Content="SEARCH" Command="{Binding Searching}" Style="{StaticResource MaterialDesignFlatButton}"  Margin="0 0 10 0" Cursor="Hand"/>
-                <TextBlock Text="Folder path" FontSize="16" Margin="30 8 10 0"/>
+                
+                <TextBlock Text="Folder path" FontSize="16" Margin="50 8 10 0"/>
                 <TextBox Text="{Binding Path=Folder, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=TxtBoxSearch}" Width="150"/>
                 <CheckBox x:Name="All" Content="All files" IsChecked="{Binding Path=AllFiles, Mode=TwoWay}" Cursor=""/>
                 <Button Content="SAVE" Command="{Binding SaveToFolder}" Style="{StaticResource MaterialDesignFlatButton}"  Margin="0 0 10 0" Cursor="Hand"/>

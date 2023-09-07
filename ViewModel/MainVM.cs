@@ -1,5 +1,6 @@
 ﻿using HW_WPF_Image_from_Pixabay.Models;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using UsefulPlantsCatalog.Model;
 
 namespace HW_WPF_Image_from_Pixabay.ViewModel
@@ -23,7 +25,7 @@ namespace HW_WPF_Image_from_Pixabay.ViewModel
         private MyImage selectedImage;
         private string searchText;
         private string folder;
-        private int amount;
+        private int amount = 3;
         private bool _isChecked;
         private bool _allfiles;
 
@@ -102,6 +104,7 @@ namespace HW_WPF_Image_from_Pixabay.ViewModel
                 return saveToFolder;
             }
         }
+
 
         public MainVM()
         {
