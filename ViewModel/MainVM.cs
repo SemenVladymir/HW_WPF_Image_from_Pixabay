@@ -109,7 +109,7 @@ namespace HW_WPF_Image_from_Pixabay.ViewModel
         public MainVM()
         {
             images = new ObservableCollection<MyImage>();
-            selectedImage = new MyImage();
+            selectedImage = new MyImage ();
         }
 
         private void SearchNLoadImages()

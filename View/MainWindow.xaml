@@ -51,7 +51,8 @@
         <ListBox ItemsSource="{Binding Images}" SelectedItem="{Binding SelectedImage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource ResourceKey=ListBoxStyle}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="{Binding UrlPhoto}" Width="45" Height="35"/>
                         <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" Margin="5, 3"/>
                         <TextBlock Text=" (" Margin="0, 3"/>
                         <TextBlock Text="{Binding Path=Size}" Margin="0, 3"/>
